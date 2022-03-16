@@ -357,7 +357,6 @@ display: flex;
 
 .plsoptions span {
   cursor: pointer;
-  color: black;
 }
 
 .currentT, .totalT {
@@ -366,7 +365,11 @@ display: flex;
   color: black;
 } 
 
-.repeat-btn :hover {
+.optional-btn :hover{
+  color: #08c9a9;
+}
+
+.optional-active {
   color: #08c9a9;
 }
 
@@ -388,3 +391,4 @@ display: flex;
   color: #fff;
   font-weight: bold;
 }
+

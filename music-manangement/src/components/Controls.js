@@ -1,4 +1,3 @@
-import { AuditOutlined } from '@ant-design/icons'
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import playerContext from '../context/playerContext'
 
@@ -8,10 +7,8 @@ function Controls() {
     currentSong,
     nextSong,
     prevSong,
-    random,
     playing,
     toggleRandom,
-    toggleRepeat,
     togglePlaying,
     handleEnd,
     songslist,
@@ -24,7 +21,8 @@ function Controls() {
   const [dur, setDur] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [repeat,setRepeat] = useState(false)
-
+  const [random,setRandom] = useState(false)
+ 
   const fmtMSS = (s) => {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + ~~s
   }
@@ -47,6 +45,9 @@ function Controls() {
     setRepeat(prev => !prev)
   }
 
+  const randomHandle = () => {
+    setRandom(prev => !prev)
+  }
 
   useEffect(() => {
     audio.current.volume = statevolum
@@ -126,13 +127,14 @@ function Controls() {
       </div>
       <div className="plsoptions">
         <span
-          onClick={toggleRandom}
-          className={'random ' + (random ? 'active' : '')}
+          onClick= {() => randomHandle()}
+          onClickCapture= {toggleRandom}
+          className={random ? 'optional-active' : 'optional-btn'}
         >
           <i className="fas fa-random"></i>
         </span>
         <span
-          className='repeat-btn'
+          className={repeat ? "optional-active" : "optional-btn"}
           onClick={() => repeatHandle()}
         >
           <i className="fas fa-redo-alt"></i>
